@@ -1,0 +1,29 @@
+{
+  "name": "hapi-themes",
+  "version": "0.2.0",
+  "description": "This plugin will add a view handler to Hapi.js routes to serve themeable content.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carbonrobot/hapi-themes.git"
+  },
+  "keywords": [
+    "web",
+    "api",
+    "http",
+    "framework",
+    "hapi",
+    "hapijs",
+    "themes",
+    "whitelabel"
+  ],
+  "author": "Charles Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carbonrobot/hapi-themes/issues"
+  },
+  "homepage": "https://github.com/carbonrobot/hapi-themes#readme"
+}
