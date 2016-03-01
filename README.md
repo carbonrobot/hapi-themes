@@ -1,11 +1,43 @@
 hapi-themes
 -------------
 
-This plugin will add a view handler to Hapi.js routes to serve themeable content.
+This plugin will add a view handler to Hapi.js routes to serve themeable content. This allows you serve different stylesheets by theme name, serve different layout files, or whatever you need.
 
 Content can be themed by url (default), http header, or a custom function.
 
 ## Usage
+
+By default, the handler will read the "theme" key from the url by taking the first url segment after the domain. For example, if your app has the following url:
+
+```
+http://www.foobar.com/batman/account
+```
+
+The theme key would be `batman` and the theme file that will be loaded is `batman.json`.
+
+### Example Theme File
+
+Theme files can contain any information you want, but must at least maintain `key` and `isDefault` properties.
+
+```json
+{
+    "key": "batman",
+    "isDefault": true,
+    "brandName": "Batman Crimefighting",
+    "logo": "logo-batman-134x23.png",
+    "logoAltText": "Batman (TM)"
+}
+```
+
+When loaded by the theme key, this theme file is injected as a js object into the view and can be used by the templating engine.
+
+```html
+<link rel="icon" type="image/png" href="images/{{theme.favicon}}" />
+<title>{{theme.brandName}}</title>
+<link rel="stylesheet" type="text/css" href="css/themes/{{theme.key}}/styles.css" />
+```
+
+## Configuration
 
 Each theme is stored in a theme file, loaded with glob pathing, and configured like any other plugin.
 
@@ -39,37 +71,6 @@ server.route({
         }
     }
 });
-```
-
-By default, the handler will read the "theme" key from the url by taking the first url segment after the domain. For example, if your app has the following url:
-
-```
-http://www.foobar.com/batman/account
-```
-
-The theme key would be `batman` and the theme file that will be loaded is `batman.json`.
-
-### Example Theme File
-
-Theme files can contain any information you want, but must at least maintain `key` and `isDefault` properties.
-
-```json
-{
-    "key": "batman",
-    "isDefault": true,
-    "brandName": "Batman Crimefighting",
-    "logo": "logo-batman-134x23.png",
-    "logoAltText": "Batman (TM)"
-}
-```
-
-When loaded by the theme key, this theme file is injected as a js object into the view and can be used by the templating engine.
-
-```
-// using mustache templating engine
-<link rel="icon" type="image/png" href="public/assets/css/themes/{{theme.key}}/img/{{theme.favicon}}" />
-<title>{{theme.brandName}}</title>
-<link rel="stylesheet" type="text/css" href="public/assets/css/themes/{{theme.key}}/styles.css" />
 ```
 
 ### Using an http header as the theme key
