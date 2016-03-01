@@ -15,6 +15,8 @@ http://www.foobar.com/batman/account
 
 The theme key would be `batman` and the theme file that will be loaded is `batman.json`.
 
+*NOTE: The theme key will be stripped out of the url when it is passed to the Hapi.js router.* This allows for flexibility when creating routes, since you will not have to account for the theme name in your url matching.
+
 ### Example Theme File
 
 Theme files can contain any information you want, but must at least maintain `key` and `isDefault` properties.
