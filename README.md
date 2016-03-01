@@ -1,6 +1,8 @@
 hapi-themes
 -------------
 
+[![npm version](https://badge.fury.io/js/hapi-themes.svg)](https://badge.fury.io/js/hapi-themes)
+
 This plugin will add a view handler to Hapi.js routes to serve themeable content. This allows you serve different stylesheets by theme name, serve different layout files, or whatever you need.
 
 Content can be themed by url (default), http header, or a custom function.
