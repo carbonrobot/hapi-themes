@@ -1,6 +1,6 @@
 {
   "name": "hapi-themes",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "This plugin will add a view handler to Hapi.js routes to serve themeable content.",
   "main": "index.js",
   "scripts": {
