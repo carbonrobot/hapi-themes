@@ -6,10 +6,10 @@ exports.handler = function (route, options) {
 	function handler(request, reply) {
 		var selectedTheme = request.app.theme;
 		
-		var model = {
-			theme: selectedTheme,
-			themeJson: JSON.stringify(selectedTheme)
-		};
+		var model = options.model || {};
+		model.theme = selectedTheme;
+		model.themeJson = JSON.stringify(selectedTheme);
+		
 		var settings = {
 			relativeTo: options.relativeTo,
 			path: options.path,

@@ -41,6 +41,8 @@ When loaded by the theme key, this theme file is injected as a js object into th
 <link rel="stylesheet" type="text/css" href="css/themes/{{theme.key}}/styles.css" />
 ```
 
+You can also inject additional information into the view model as needed to be used in the view. See details further down.
+
 ## Configuration
 
 Each theme is stored in a theme file, loaded with glob pathing, and configured like any other plugin.
@@ -90,6 +92,39 @@ var themes = {
         keyStrategy: 'header'
 	}
 };
+```
+
+### Injecting custom model data
+
+To inject additional model data to be used in the view templates, set the `model` property in options.
+
+```js
+server.route({
+    method: 'GET',
+    path: '/',
+    handler: {
+        theme: {
+            template: 'index',
+            layout: 'default',
+            relativeTo: Path.join(__dirname, 'server/views'),
+            model: {
+                env: 'dev',
+                version: 'v1.0.0.1',
+                debug: true
+            }
+        }
+    }
+});
+```
+
+```html
+<link rel="icon" type="image/png" href="images/{{theme.favicon}}" />
+<title>{{theme.brandName}}</title>
+<link rel="stylesheet" type="text/css" href="css/themes/{{theme.key}}/styles.css" />
+{{#if debug}}
+    Environment {{env}}
+    Version {{version}}
+{{/if}}
 ```
 
 ### Using a custom function for theme resolution
