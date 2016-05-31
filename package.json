@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/carbonrobot/hapi-themes/issues"
   },
-  "homepage": "https://github.com/carbonrobot/hapi-themes#readme"
+  "homepage": "https://github.com/carbonrobot/hapi-themes#readme",
+  "dependencies": {
+    "glob": "^7.0.0",
+    "lodash": "^4.6.0"
+  }
 }

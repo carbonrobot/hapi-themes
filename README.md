@@ -142,3 +142,26 @@ var themes = {
 	}
 };
 ```
+
+### Overriding the theme for a specific route (not typical)
+
+For cases when you want to ignore the theme key for a single route
+
+```js
+server.route({
+    method: 'GET',
+    path: '/',
+    handler: {
+        theme: {
+            template: 'index',
+            layout: 'default',
+            relativeTo: Path.join(__dirname, 'server/views'),
+            overrideTheme: {
+                key: 'batman',
+                isDefault: 'false',
+                name: 'Batman Theme!'
+            }
+        }
+    }
+});
+```

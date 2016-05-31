@@ -5,6 +5,9 @@ var Path = require('path');
 exports.handler = function (route, options) {
 	function handler(request, reply) {
 		var selectedTheme = request.app.theme;
+        if(options.overrideTheme){
+            selectedTheme = options.overrideTheme;
+        }
 		
 		var model = options.model || {};
 		model.theme = selectedTheme;
